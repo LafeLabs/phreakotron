@@ -1,8 +1,10 @@
 {
     "html": [
         "README.md",
+        "animationtest.html",
         "bipm.html",
         "board.html",
+        "control-p5js.html",
         "control2response.html",
         "fork.html",
         "forkdestroyer.html",
