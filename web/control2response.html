@@ -58,6 +58,22 @@ WELCOME GOTH PASTA! LET'S BUILD THIS ALL OVER NEW YORK CITY AND FROM THERE TO A 
     </tr>
 </table>
 
+<table id = "inputtable">
+    <tr>
+        <td>
+            SQUARE SIZE[PX]:
+        </td>
+        <td>
+            <input id = "squaresizeinput"/>
+        </td>
+    </tr>
+    <tr>
+        <td>KEYBOARD INPUT(NUMKEYS):</td>
+        <td>
+            <input id = "actioninput"/>
+        </td>
+    </tr>
+</table>
 <table id = "responsetable">
     <tr>
         <td id = "en1">!en1</td>
@@ -444,6 +460,105 @@ function geometronAction(action){
     }
 }
 
+outputsquaresize = 150;
+document.getElementById("squaresizeinput").value = outputsquaresize.toString();
+
+document.getElementById("squaresizeinput").onchange = function(){
+    outputsquaresize = parseInt(this.value);
+    outputsquares = document.getElementById("responsetable").getElementsByTagName("TD");
+    for(var index = 0;index < outputsquares.length;index++){
+        outputsquares[index].style.width = outputsquaresize.toString() + "px";
+        outputsquares[index].style.height = outputsquaresize.toString() + "px";
+    }
+    
+}
+
+document.getElementById("actioninput").value = "";
+document.getElementById("actioninput").select();
+document.getElementById("actioninput").onkeydown = function(a){
+    
+    var charCode = a.keyCode || a.which;
+    document.getElementById("actioninput").value ="";
+    
+    console.log(charCode);
+    if(charCode == 0161 || charCode == 0121) { //q/Q = quit
+        //quit
+        location.reload(); 
+
+    }
+    if(charCode == 040) { //go = space bar
+        runGlyph();
+        //
+    }
+
+
+    if(charCode == 0141 || charCode == 0101) { //a = up
+        document.getElementById("en1").style.backgroundColor = "white";
+        document.getElementById("en2").style.backgroundColor = "white";
+        document.getElementById("en3").style.backgroundColor = "black";
+        document.getElementById("dir1").style.backgroundColor = "black";
+        document.getElementById("dir2").style.backgroundColor = "black";
+        document.getElementById("dir3").style.backgroundColor = "black";
+    }
+    if(charCode == 0172 || charCode == 0132) { //z = down
+        document.getElementById("en1").style.backgroundColor = "white";
+        document.getElementById("en2").style.backgroundColor = "white";
+        document.getElementById("en3").style.backgroundColor = "black";
+        document.getElementById("dir1").style.backgroundColor = "black";
+        document.getElementById("dir2").style.backgroundColor = "black";
+        document.getElementById("dir3").style.backgroundColor = "white";
+
+    }
+    if(charCode == 050) { //down arrow towards
+        document.getElementById("en1").style.backgroundColor = "white";
+        document.getElementById("en2").style.backgroundColor = "black";
+        document.getElementById("en3").style.backgroundColor = "white";
+        document.getElementById("dir1").style.backgroundColor = "black";
+        document.getElementById("dir2").style.backgroundColor = "white";
+        document.getElementById("dir3").style.backgroundColor = "black";
+
+    }
+    if(charCode == 046) { //up arrow is away
+        document.getElementById("en1").style.backgroundColor = "white";
+        document.getElementById("en2").style.backgroundColor = "black";
+        document.getElementById("en3").style.backgroundColor = "white";
+        document.getElementById("dir1").style.backgroundColor = "black";
+        document.getElementById("dir2").style.backgroundColor = "black";
+        document.getElementById("dir3").style.backgroundColor = "black";
+
+    }
+    if(charCode == 045) { //left arrow = left
+        document.getElementById("en1").style.backgroundColor = "black";
+        document.getElementById("en2").style.backgroundColor = "white";
+        document.getElementById("en3").style.backgroundColor = "white";
+        document.getElementById("dir1").style.backgroundColor = "black";
+        document.getElementById("dir2").style.backgroundColor = "black";
+        document.getElementById("dir3").style.backgroundColor = "black";
+
+    }
+    if(charCode == 047) { //right arrow = right
+        document.getElementById("en1").style.backgroundColor = "black";
+        document.getElementById("en2").style.backgroundColor = "white";
+        document.getElementById("en3").style.backgroundColor = "white";
+        document.getElementById("dir1").style.backgroundColor = "white";
+        document.getElementById("dir2").style.backgroundColor = "black";
+        document.getElementById("dir3").style.backgroundColor = "black";
+
+    }
+
+}
+
+document.getElementById("actioninput").onkeyup = function(){
+    
+    document.getElementById("en1").style.backgroundColor = "white";
+    document.getElementById("en2").style.backgroundColor = "white";
+    document.getElementById("en3").style.backgroundColor = "white";
+    document.getElementById("dir1").style.backgroundColor = "black";
+    document.getElementById("dir2").style.backgroundColor = "black";
+    document.getElementById("dir3").style.backgroundColor = "black";
+
+}
+
 
 </script>
 <style>
@@ -469,6 +584,27 @@ body{
         background-color:black;
         color:purple;
     }
+#responsetable{
+    position:absolute;
+    right:0px;
+    bottom:0px;
+}
+#inputtable{
+    position:absolute;
+    right:0px;
+    top:0px;
+    background-color:black;
+    color:#00ff00;
+    font-family:courier;
+    font-size:20px;
+}
+#inputtable input{
+    background-color:black;
+    color:#00ff00;
+    font-family:courier;
+    font-size:20px;
+    
+}
 
 </style>
 </body>
